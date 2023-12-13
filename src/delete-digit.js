@@ -16,8 +16,6 @@ function deleteDigit(n) {
     testArray = [...array],
     number = 0;
 
-  console.log(testArray);
-
   for (let i = 0; i < array.length; i += 1) {
     testArray.splice(i, 1);
     testArray = +testArray.join("");
