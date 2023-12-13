@@ -12,15 +12,25 @@ const { NotImplementedError } = require("../extensions/index.js");
  *
  */
 function deleteDigit(n) {
-  let array = Array.from(String(n), Number);
-  let lessNumber = 9;
-  array.forEach((num) => {
-    if (num < lessNumber) {
-      lessNumber = num;
+  let array = Array.from(String(n), Number),
+    testArray = [...array],
+    number = 0;
+
+  console.log(testArray);
+
+  for (let i = 0; i < array.length; i += 1) {
+    testArray.splice(i, 1);
+    testArray = +testArray.join("");
+
+    if (testArray > number) {
+      number = testArray;
+      testArray = [...array];
+    } else {
+      testArray = [...array];
     }
-  });
-  array.splice(array.indexOf(lessNumber), 1);
-  return +array.join("");
+  }
+
+  return number;
 }
 
 module.exports = {
