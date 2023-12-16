@@ -17,46 +17,46 @@ const { NotImplementedError } = require("../extensions/index.js");
  */
 function repeater(str, options) {
   let strOutput = "",
-    repeatTimes = options.repeatTimes ?? 1,
-    separator = options.separator ?? "+",
-    addition = options.addition,
-    additionRepeatTimes = options.additionRepeatTimes ?? 1,
-    additionSeparator = options.additionSeparator ?? "";
+  repeatTimes = options.repeatTimes ?? 1,
+  separator = options.separator ?? "+",
+  addition = options.addition,
+  additionRepeatTimes = options.additionRepeatTimes ?? 1,
+  additionSeparator = options.additionSeparator ?? "|";
 
-  String(str);
-  if (
-    options.hasOwnProperty("addition") &&
-    typeof options.addition !== "string"
-  ) {
-    String(addition);
-  } else {
-    addition = options.addition ?? ''
-  }
+String(str);
+if (
+  options.hasOwnProperty("addition") &&
+  typeof options.addition !== "string"
+) {
+  String(addition);
+} else {
+  addition = options.addition ?? "";
+}
 
-  for (let repeatStr = 0; repeatStr < repeatTimes; repeatStr++) {
-    let repeatSeporator = repeatStr + 1;
-    strOutput += str;
+for (let repeatStr = 0; repeatStr < repeatTimes; repeatStr++) {
+  let repeatSeporator = repeatStr + 1;
+  strOutput += str;
 
-    for (let addStr = 0; addStr < additionRepeatTimes; addStr++) {
-      if (additionRepeatTimes) {
-        strOutput += addition;
-        if (
-          additionSeparator &&
-          additionRepeatTimes > 1 &&
-          additionRepeatTimes - addStr > 1
-        ) {
-          strOutput += additionSeparator;
-        }
-      } else if (!additionRepeatTimes && additionRepeatTimes - addStr > 1) {
-        strOutput += addition;
+  for (let addStr = 0; addStr < additionRepeatTimes; addStr++) {
+    if (additionRepeatTimes) {
+      strOutput += addition;
+      if (
+        additionSeparator &&
+        additionRepeatTimes > 1 &&
+        additionRepeatTimes - addStr > 1
+      ) {
+        strOutput += additionSeparator;
       }
-    }
-
-    if (repeatSeporator < repeatTimes) {
-      strOutput += separator;
+    } else if (!additionRepeatTimes && additionRepeatTimes - addStr > 1) {
+      strOutput += addition;
     }
   }
-  return strOutput;
+
+  if (repeatSeporator < repeatTimes) {
+    strOutput += separator;
+  }
+}
+return strOutput;
 }
 
 module.exports = {
