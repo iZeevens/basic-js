@@ -19,9 +19,19 @@ function repeater(str, options) {
   let strOutput = "",
     repeatTimes = options.repeatTimes ?? 1,
     separator = options.separator ?? "+",
-    addition = options.addition ?? "",
+    addition = options.addition,
     additionRepeatTimes = options.additionRepeatTimes ?? 1,
     additionSeparator = options.additionSeparator ?? "";
+
+  String(str);
+  if (
+    options.hasOwnProperty("addition") &&
+    typeof options.addition !== "string"
+  ) {
+    String(addition);
+  } else {
+    addition = options.addition ?? ''
+  }
 
   for (let repeatStr = 0; repeatStr < repeatTimes; repeatStr++) {
     let repeatSeporator = repeatStr + 1;
