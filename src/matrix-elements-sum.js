@@ -25,15 +25,11 @@ function getMatrixElementsSum(matrix) {
       if (i !== 0) {
         if (matrix[i][j] === 0) {
           if (stack.includes(j)) {
-            continue;
           } else {
             stack.push(j);
-            continue;
           }
-        }
-        if (stack.includes(j)) {
+        } else if (stack.includes(j)) {
           stack.shift();
-          continue;
         } else {
           total += matrix[i][j];
         }
