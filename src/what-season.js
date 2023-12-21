@@ -13,12 +13,8 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 
 function leapYear(year) {
-  const checkYearLeap = year % 100;
-
-  if (Number.isInteger(checkYearLeap)) {
-      if (Number.isInteger(checkYearLeap % 400)) {
-          return true
-      }
+  if (year % 100 === 0 && year % 400 === 0) {
+      return true
   } else {
       return false
   }
