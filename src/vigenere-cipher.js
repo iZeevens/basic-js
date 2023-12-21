@@ -54,7 +54,7 @@ class VigenereCipheringMachine {
 
     while (resultEncrypt.length !== world.length) {
       if (newWorld[0] === " " || newWorld[0] === "!") {
-        resultEncrypt.push(newWorld[0]);
+        resultEncrypt.push(newWorld.shift());
         continue;
       }
 
