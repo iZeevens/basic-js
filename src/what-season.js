@@ -11,6 +11,19 @@ const { NotImplementedError } = require('../extensions/index.js');
  * getSeason(new Date(2020, 02, 31)) => 'spring'
  * 
  */
+
+function leapYear(year) {
+  const checkYearLeap = year % 100;
+
+  if (Number.isInteger(checkYearLeap)) {
+      if (Number.isInteger(checkYearLeap % 400)) {
+          return true
+      }
+  } else {
+      return false
+  }
+}
+
 function getSeason(/* date */) {
   throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
