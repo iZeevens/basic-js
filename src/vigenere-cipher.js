@@ -20,8 +20,9 @@ const { NotImplementedError } = require("../extensions/index.js");
  *
  */
 class VigenereCipheringMachine {
-  constructor() {
-    this.matrix = [];
+  constructor(boolean) {
+    this.boolean = boolean ?? true,
+    this.matrix = []
   }
 
   matrixVigenere() {
@@ -79,7 +80,13 @@ class VigenereCipheringMachine {
       resultEncrypt.push(this.matrix[indexArray][indexWorld]);
     }
 
-    return resultEncrypt.join("");
+    
+    if (!this.boolean) {
+      return resultEncrypt.reverse().join("")
+    } else {
+      return resultEncrypt.join("")
+    }
+    // return resultEncrypt.join("");
   }
   decrypt(encryptWord, key) {
     if (!encryptWord || !key) {
@@ -121,7 +128,12 @@ class VigenereCipheringMachine {
       resultDecrypt.push(this.matrix[0][indexWord]);
     }
 
-    return resultDecrypt.join("");
+    if (!this.boolean) {
+      return resultDecrypt.reverse().join("")
+    } else {
+      return resultDecrypt.join("")
+    }
+    // return resultDecrypt.join("");
   }
 }
 
