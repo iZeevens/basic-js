@@ -20,6 +20,24 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 class VigenereCipheringMachine {
+  constructor() {
+      this.matrix = []
+  }
+
+  matrixVigenere() {
+      const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+      this.matrix.push([...alphabet]);
+
+      for (let i = 0; i < 25; i++) {
+          let firstElem = alphabet[0];
+          alphabet.shift();
+          alphabet.push(firstElem)
+
+          this.matrix.push([...alphabet]);
+      }
+      return this.matrix
+  }
+
   encrypt() {
     throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
