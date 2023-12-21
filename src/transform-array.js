@@ -30,12 +30,18 @@ function transform(arr) {
     }
 
     if (arr[i] === "--double-prev") {
-      stack.push(arr[i - 1]);
+      if (i > 0) {
+        stack.push(arr[i - 1]);
+      }
+      continue;
     } else if (arr[i] === "--double-next") {
-      stack.push(arr[i + 1]);
+      if (arr.length - i > 1) {
+        stack.push(arr[i + 1]);
+      }
+      continue;
     }
 
-    stack.push(arr[i])
+    stack.push(arr[i]);
   }
 
   return stack;
