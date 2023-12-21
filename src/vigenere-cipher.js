@@ -55,7 +55,7 @@ class VigenereCipheringMachine {
         indexArray = null,
         indexWorld = null;
 
-      if (newWorldCurrentArray === " " || newWorldCurrentArray === "!") {
+      if (!/[a-zA-Z]/.test(newWorldCurrentArray)) {
         resultEncrypt.push(newWorld.shift());
         continue;
       }
@@ -97,7 +97,7 @@ class VigenereCipheringMachine {
     while (resultDecrypt.length !== encryptWord.length) {
       let indexWord = null;
 
-      if (newEncryptWorld[0] === " " || newEncryptWorld[0] === "!") {
+      if (!/[a-zA-Z]/.test(newEncryptWorld[0])) {
         resultDecrypt.push(newEncryptWorld.shift());
         continue;
       }
