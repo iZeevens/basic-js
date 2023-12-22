@@ -86,7 +86,6 @@ class VigenereCipheringMachine {
     } else {
       return resultEncrypt.join("")
     }
-    // return resultEncrypt.join("");
   }
   decrypt(encryptWord, key) {
     if (!encryptWord || !key) {
@@ -133,7 +132,6 @@ class VigenereCipheringMachine {
     } else {
       return resultDecrypt.join("")
     }
-    // return resultDecrypt.join("");
   }
 }
 
