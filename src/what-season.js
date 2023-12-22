@@ -21,18 +21,15 @@ function leapYear(year) {
 }
 
 function getSeason(date) {
-  // if (!(date instanceof Date)) {
-  //   throw new Error('Unable to determine the time of year!')
-  // }
-  if (!(date instanceof Date)) {
-    throw Error('Unable to determine the time of year!')
+  if (!date) {
+    return ("Unable to determine the time of year!");
   }
   try {
     const year = date.getUTCFullYear(),
     month = date.getUTCMonth() + 1,
     day = date.getUTCDate();
 
-
+    
   if (month >= 3 && month <= 5) {
     return "spring";
   } else if (month >= 6 && month <= 8) {
