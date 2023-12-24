@@ -15,9 +15,9 @@ const chainMaker = {
     this.chain.push(`(${value})`);
     return this;
   },
-  removeLink(/* position */) {
-    throw new NotImplementedError("Not implemented");
-    // remove line with error and write your code here
+  removeLink(position) {
+    this.chain.splice(position - 1, 1);
+    return this;
   },
   reverseChain() {
     this.chain.reverse()
