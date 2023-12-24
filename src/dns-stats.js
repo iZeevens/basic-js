@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../extensions/index.js');
+const { NotImplementedError } = require("../extensions/index.js");
 
 /**
  * Given an array of domains, return the object with the appearances of the DNS.
@@ -23,26 +23,37 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function getDNSStats(domains) {
-  let array = domains.map((item) => item.split('.').reverse()),
-        arrayJoined = [];
-        arrayValues = [],
-        objDns = {}
+  let array = domains.map((item) => item.split(".").reverse()),
+    object = {};
 
-    array.push([array[0][0]])
-    array.sort()
-    array.forEach((item) => {
-        arrayJoined.push('.' + item.join('.'))
-    })
+  array.push([array[0][0]]);
+  array.sort();
 
-    // array.forEach((item) => {
-    //     objDns['.' + item.toString().replace(/,/g, '.')] = 1
-    // })
+  let arrayJoined = array.map((item) => "." + item.join("."));
 
-    
-    // objDns['.' + item.toString().replace(/,/g, '.')] = 1
-    return arrayJoined
+  for (let i = 0; i < arrayJoined.length; i++) {
+    let element = arrayJoined[i],
+      counter = 1;
+
+    for (let j = 0; j <= arrayJoined.length; j++) {
+      if (element === arrayJoined[j]) {
+        continue;
+      }
+      if (arrayJoined[j] && arrayJoined[j].includes(element)) {
+        counter++;
+      } else {
+        if (element === arrayJoined[0]) {
+          object[element] = counter - 1;
+        } else {
+          object[element] = counter;
+        }
+      }
+    }
+  }
+
+  return object;
 }
 
 module.exports = {
-  getDNSStats
+  getDNSStats,
 };
